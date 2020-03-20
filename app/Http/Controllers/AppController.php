@@ -15,7 +15,7 @@ class AppController extends Controller
     public function index()
     {
         $application=Application::all();
-        return responce()->json($application);
+        return response()->json($application);
     }
 
     /**
@@ -29,7 +29,8 @@ class AppController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource 
+     * in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -52,7 +53,7 @@ class AppController extends Controller
         $application->comments=$request->comments;
         
         $application->save();
-        return responce()->json($application);
+        return response()->json($application);
 
         
 
