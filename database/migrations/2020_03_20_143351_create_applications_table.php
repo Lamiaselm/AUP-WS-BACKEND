@@ -23,7 +23,7 @@ class CreateApplicationsTable extends Migration
             $table->string('tshirt');
             $table->string('abt_urslf');
             $table->string('why_aup');
-            $table->string('team');
+            $table->integer('team');
             $table->string('cv');
             $table->string('github');
             $table->string('linkedin');
