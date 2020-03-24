@@ -19,7 +19,7 @@ class CreateApplicationsTable extends Migration
             $table->timestamps();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('tshirt');
             $table->string('abt_urslf');
             $table->string('why_aup');

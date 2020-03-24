@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Route;
 */ 
 Route::get('/app','AppController@index');
 Route::post('/save','AppController@store');
-Route::get('/userget','LoginController@index');
-Route::post('/userpost','LoginController@store');
-Route::get('/userget','SignupController@index');
-Route::post('/signuppost','SignupController@store');
+
+Route::post('/register','Usercontroller@register');
+Route::post('/login','Usercontroller@login');
+Route::get('/profile','Usercontroller@getAuthenticatedUser');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

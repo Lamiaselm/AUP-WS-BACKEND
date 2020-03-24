@@ -35,7 +35,15 @@ class SignupController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   $user=User::all();
+    {   $this->validate($request,array(
+        'nom'=>'required|min:5',
+        'prenom'=>'required|min:5',
+        'email'=>'required|email|unique:users,email',
+        'password'=>'required|min:5',
+    ));
+        
+        $user=User::all();
+        
 
         $user=new User ();
         $user->nom=$request->nom;
