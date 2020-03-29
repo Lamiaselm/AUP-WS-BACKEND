@@ -22,7 +22,8 @@ Route::get('/profile','Usercontroller@getAuthenticatedUser');
 
 Route::get('/mely/{id_app}','AppController@indexID');
 
-Route::post('/accept/{id_app}','AppController@update');
+Route::post('/accept/{id_app}','AppController@updateAccept');
+Route::post('/reject/{id_app}','AppController@updateReject');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

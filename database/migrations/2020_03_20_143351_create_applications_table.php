@@ -29,6 +29,8 @@ class CreateApplicationsTable extends Migration
             $table->string('github');
             $table->string('linkedin');
             $table->string('comments');
+            $table->integer('accept')->default('0');
+            $table->integer('reject')->default('0');
         });
     }
 

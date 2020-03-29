@@ -56,7 +56,7 @@ class AppController extends Controller
         $application->github=$request->github;
         $application->linkedin=$request->linkedin;
         $application->comments=$request->comments;
-     //   $request->flash();
+        $application= $request->flash();
         $application->save();
         return response()->json($application);
 
@@ -94,11 +94,19 @@ class AppController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function update($id_app)
+    public function updateAccept($id_app)
     {  
         Application::where('id_app',$id_app)->update(
             [
                 'accept'=>'1',
+            ]
+            );
+    }
+    public function updateReject($id_app)
+    {  
+        Application::where('id_app',$id_app)->update(
+            [
+                'reject'=>'1',
             ]
             );
     }
