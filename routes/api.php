@@ -20,6 +20,8 @@ Route::post('/register','Usercontroller@register');
 Route::post('/login','Usercontroller@login');
 Route::get('/profile','Usercontroller@getAuthenticatedUser');
 
+Route::get('/mely/{id_app}','AppController@indexID');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

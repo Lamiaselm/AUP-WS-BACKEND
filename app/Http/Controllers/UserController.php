@@ -73,6 +73,8 @@ class UserController extends Controller
             return response()->json(['token_absent'], $e->getStatusCode());
         }
         return response()->json(compact('user'));
+        $userEmail=$user->email;
+        Session::put('userEmail',$userEmail);
     }
 
 }

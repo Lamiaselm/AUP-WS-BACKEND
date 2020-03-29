@@ -17,6 +17,11 @@ class AppController extends Controller
         $application=Application::all();
         return response()->json($application);
     }
+    public function indexID($id_app)
+    {
+        $application=Application::find($id_app);
+        return response()->json($application);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -51,7 +56,7 @@ class AppController extends Controller
         $application->github=$request->github;
         $application->linkedin=$request->linkedin;
         $application->comments=$request->comments;
-        
+     //   $request->flash();
         $application->save();
         return response()->json($application);
 
@@ -88,9 +93,14 @@ class AppController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function update(Request $request, $id)
-    {
-        //
+    {  /* $userEmail = $request->session()->get('userEmail');
+        Application::where('email',$userEmail)->update(
+            [
+                'nom'=>$request->nom,
+            ]
+            );*/
     }
 
     /**

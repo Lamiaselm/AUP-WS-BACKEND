@@ -16,6 +16,7 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             
             $table->bigIncrements('id_app');
+           
             $table->timestamps();
             $table->string('nom');
             $table->string('prenom');
