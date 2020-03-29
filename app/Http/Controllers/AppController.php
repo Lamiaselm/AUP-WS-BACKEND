@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Application;
+use Illuminate\Support\Facades\DB;
 
 class AppController extends Controller
 {
@@ -56,7 +57,7 @@ class AppController extends Controller
         $application->github=$request->github;
         $application->linkedin=$request->linkedin;
         $application->comments=$request->comments;
-        $application= $request->flash();
+        
         $application->save();
         return response()->json($application);
 
@@ -95,20 +96,40 @@ class AppController extends Controller
      */
     
     public function updateAccept($id_app)
-    {  
+    {     
+        $reject = DB::table('applications')->where('id_app', $id_app)->value('reject');
+          if ($reject==0){
         Application::where('id_app',$id_app)->update(
             [
                 'accept'=>'1',
             ]
             );
+        } else {
+            Application::where('id_app',$id_app)->update(
+                [
+                    'reject'=>'0',
+                    'accept'=>'1',
+                ]
+                );
+        }
     }
     public function updateReject($id_app)
     {  
-        Application::where('id_app',$id_app)->update(
-            [
-                'reject'=>'1',
-            ]
-            );
+        $accept = DB::table('applications')->where('id_app', $id_app)->value('accept');
+        if ($accept==0){
+      Application::where('id_app',$id_app)->update(
+          [
+              'reject'=>'1',
+          ]
+          );
+      } else {
+          Application::where('id_app',$id_app)->update(
+              [
+                  'accept'=>'0',
+                  'reject'=>'1',
+              ]
+              );
+      }
     }
 
     /**
@@ -120,5 +141,21 @@ class AppController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function old($id_app)
+    {
+        $application=Application::find($id_app);
+        $application->nom=$request->flash();
+        $application->prenom=$request->flash();
+        $application->email=$request->flash();
+        $application->tshirt=$request->flash();
+        $application->abt_urslf=$request->flash();
+        $application->why_aup=$request->flash();
+        $application->team=$request->flash();
+        $application->cv=$request->flash();
+        $application->github=$request->flash();
+        $application->linkedin=$request->flash();
+        $application->comments=$request->flash();
+        return response()->json($application);
     }
 }
