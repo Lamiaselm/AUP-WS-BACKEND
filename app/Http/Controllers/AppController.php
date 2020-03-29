@@ -94,13 +94,13 @@ class AppController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function update(Request $request, $id)
-    {  /* $userEmail = $request->session()->get('userEmail');
-        Application::where('email',$userEmail)->update(
+    public function update($id_app)
+    {  
+        Application::where('id_app',$id_app)->update(
             [
-                'nom'=>$request->nom,
+                'accept'=>'1',
             ]
-            );*/
+            );
     }
 
     /**
