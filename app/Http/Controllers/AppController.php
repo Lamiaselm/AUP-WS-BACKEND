@@ -144,18 +144,12 @@ class AppController extends Controller
     }
     public function old($id_app)
     {
-        $application=Application::find($id_app);
-        $application->nom=$request->flash();
-        $application->prenom=$request->flash();
-        $application->email=$request->flash();
-        $application->tshirt=$request->flash();
-        $application->abt_urslf=$request->flash();
-        $application->why_aup=$request->flash();
-        $application->team=$request->flash();
-        $application->cv=$request->flash();
-        $application->github=$request->flash();
-        $application->linkedin=$request->flash();
-        $application->comments=$request->flash();
-        return response()->json($application);
+        //
+    }
+    public function getStatut($email){
+
+        $result = DB::table('applications')->where('email',$email)->first();
+        return response()->json($result);
+       
     }
 }
