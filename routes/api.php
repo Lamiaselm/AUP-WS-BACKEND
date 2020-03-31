@@ -27,6 +27,8 @@ Route::post('/reject/{id_app}','AppController@updateReject');
 
 Route::get('/flash/{id_app}','AppController@old');
 Route::get('/statut/{email}','AppController@getStatut');
+
+Route::get('/team/{email}','AppController@getTeam');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

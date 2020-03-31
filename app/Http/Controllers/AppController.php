@@ -154,4 +154,12 @@ class AppController extends Controller
         return response()->json($result);
        
     }
+    public function getTeam($email){
+
+        $id_team = DB::table('applications')->where('email',$email)->value("id_team");
+        $team= DB::table('applications')->where('id_team',$id_team)->get();
+        return response()->json($team);
+       
+    }
+
 }
