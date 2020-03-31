@@ -25,6 +25,8 @@ class CreateApplicationsTable extends Migration
             $table->string('abt_urslf');
             $table->string('why_aup');
             $table->integer('team');
+            $table->integer('new_team')->nullable();
+            $table->string('id_team')->nullable();
             $table->string('cv');
             $table->string('github');
             $table->string('linkedin');

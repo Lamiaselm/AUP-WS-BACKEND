@@ -53,6 +53,8 @@ class AppController extends Controller
         $application->abt_urslf=$request->abt_urslf;
         $application->why_aup=$request->why_aup;
         $application->team=$request->team;
+        $application->new_team=$request->new_team;
+        $application->id_team=$request->id_team;
         $application->cv=$request->cv;
         $application->github=$request->github;
         $application->linkedin=$request->linkedin;
